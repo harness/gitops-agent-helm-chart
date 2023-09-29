@@ -11,6 +11,11 @@ imageRepo: ""
 argocd:
   image: argoproj/argocd:v2.7.8
 
+  # Disable to prevent this chart install from creating and updating Argo CustomResourceDefinitons (CRDs)
+  # This is needed for multiple chart installs to a single cluster or namespaced agents.
+  # In the case of multiple charts being installed into one cluster, only one install should manage the CRDs
+  manageCRDs: true
+
 redis:
   image: redis:6.2.12-alpine
 
