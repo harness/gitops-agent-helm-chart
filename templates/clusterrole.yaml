@@ -13,8 +13,6 @@ rules:
       - '*'
     verbs:
       - get
-      - patch
-      - delete
       - watch
       - list
   - apiGroups:
