@@ -1,0 +1,25 @@
+# The image repository to prepend to images pulled in deployments.  Such as a DockerHub proxy in Artifactory or Nexus.
+# Example:
+# imageRepo: "artifactory.corp/dockerhub-proxy/"
+imageRepo: ""
+
+harness:
+  # REQUIRED: The ID of the Harness account where the agent will connect.
+  # Can be obtained from the URL of your Harness account: https://app.harness.io/ng/account/<accountId>/main-dashboard
+  accountId: ""
+
+  # Optional: Identifier of the Harness Organization to install the agent into
+  orgId: ""
+
+  # Optional: Identifier of the Harness Project to install the agent into
+  projectId: ""
+
+  # URL of the Harness manager for Self Managed Platform installs
+  smpManagerURL: ""
+
+  agent:
+    # REQUIRED: Identifier of the GitOps agent to register with Harness
+    identifier: ""
+
+    # REQUIRED: GitOps Agent Token for GitOps agent to connect to Harness control plane.
+    gitOpsAgentToken: ""

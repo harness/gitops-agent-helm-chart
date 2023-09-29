@@ -1,0 +1,11 @@
+{{- if not .Values.harness.accountId }}
+{{- fail "ERROR: harness.accountId is not set." }}
+{{- end }}
+
+{{- if not .Values.harness.agent.gitOpsAgentToken }}
+{{- fail "ERROR: harness.agent.gitOpsAgentToken is not set." }}
+{{- end }}
+
+{{- if not .Values.harness.agent.identifier }}
+{{- fail "ERROR: harness.agent.identifier is not set." }}
+{{- end }}

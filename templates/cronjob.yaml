@@ -1,0 +1,33 @@
+{{- if .Values.harness.agent.upgrader.enabled -}}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "gitops-agent.fullname" . }}-upgrader
+  namespace: {{ .Release.Namespace }}
+spec:
+  schedule: "0 */4 * * *"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 20
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: {{ include "gitops-agent.fullname" . }}-upgrader
+          containers:
+              - name: upgrader
+                image: {{ .Values.imageRepo }}harness/upgrader:latest
+                imagePullPolicy: Always
+                env:
+                  - name: POD_NAMESPACE
+                    valueFrom:
+                      fieldRef:
+                        fieldPath: metadata.namespace
+                volumeMounts:
+                  - name: config-volume
+                    mountPath: /etc/config
+          volumes:
+            - name: config-volume
+              configMap:
+                name: {{ include "gitops-agent.fullname" . }}-upgrader
+          restartPolicy: Never
+{{- end }}
