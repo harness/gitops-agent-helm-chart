@@ -17,6 +17,15 @@ harness:
   # URL of the Harness manager for Self Managed Platform installs
   smpManagerURL: ""
 
+  # Full bundle of the CA cert and intermediate certificates to trust on the agent.  Needed for SMP installs or proxies doing TLS interception
+  certBundle: "" #|
+    # -----BEGIN CERTIFICATE-----  
+    # XXXXXXXXXXXXXXXXXXXXXXXXXXX  
+    # -----END CERTIFICATE-------  
+    # -----BEGIN CERTIFICATE-----  
+    # XXXXXXXXXXXXXXXXXXXXXXXXXXX  
+    # -----END CERTIFICATE-------
+
   agent:
     # REQUIRED: Identifier of the GitOps agent to register with Harness
     identifier: ""

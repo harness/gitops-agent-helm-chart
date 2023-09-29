@@ -73,7 +73,11 @@ data:
   {{- if .Values.harness.projectId }}
   GITOPS_PROJECT_IDENTIFIER: {{.Values.harness.projectId }}
   {{- end }}
+  {{- if .Values.harness.certBundle }}
+  GITOPS_SERVICE_HTTP_TLS_ENABLED: "true"
+  {{- else }}
   GITOPS_SERVICE_HTTP_TLS_ENABLED: "false"
+  {{- end }}
   GITOPS_SERVICE_HTTP_CERT_FILES: /tmp/ca.bundle
   AGENT_HTTP_TARGET: {{ include "gitops-agent.agentHttpTarget" . | quote }}
   AGENT_GRPC_TARGET: {{ include "gitops-agent.agentGrpcTarget" . | quote }}
