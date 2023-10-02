@@ -43,7 +43,7 @@ harness:
     # -----END CERTIFICATE-------
 
   # Optional: List of repository server hostnames to trust, signed by the certificates listed above.  Hostnames in this list will automatically be added to the list of Repository Certificates.
-  repoServers: {}
+  repoServers: []
   # - server1.corp.net
   # - server2.corp.net
 
