@@ -17,4 +17,4 @@ When using multiple agents across the same kubernetes cluster, only one chart sh
 Agent installations connecting to Self Managed Platform (SMP) Harness installs should make sure to set the following fields.  
 
 * `harness.smpManagerURL` - The URL you use to log into Harness (e.g. https://harness.company.net)
-* `harness.certBundle` - Certificates to trust for connectivity from the agent, such as the CA cert chain or self signed cert used by your SMP install.
+* `harness.certBundle` - Certificates to trust for connectivity from the agent.  Should contain the list of endpoint certificates that need trusted from the agent, such as the SMP host and git repository servers.
