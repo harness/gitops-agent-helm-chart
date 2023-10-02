@@ -14,10 +14,10 @@ harness:
   # Optional: Identifier of the Harness Project to install the agent into
   projectId: ""
 
-  # URL of the Harness manager for Self Managed Platform installs
+  # URL of the Harness manager for Self Managed Platform installs.  Only needed for SMP installs.
   smpManagerURL: ""
 
-  # Full bundle of the CA cert and intermediate certificates to trust on the agent.  Needed for SMP installs or proxies doing TLS interception
+  # PEM formatted bundle of certificates to trust on the agent. Such as self signed certs, or the CA cert and intermediate certificates used to sign internal traffic in your organization.  Needed for SMP installs or proxies doing TLS interception
   certBundle: "" #|
     # -----BEGIN CERTIFICATE-----  
     # XXXXXXXXXXXXXXXXXXXXXXXXXXX  
