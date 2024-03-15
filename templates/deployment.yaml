@@ -510,6 +510,10 @@ spec:
               subPath: ca.bundle
             - mountPath: /tmp
               name: tmp
+            {{ if .Values.gitopsAgent.mtls.enabled }}
+            - mountPath: /etc/mtls
+              name: mtls
+            {{ end }}
           resources:
             requests:
               memory: 256Mi
@@ -558,4 +562,15 @@ spec:
             items:
               - key: ca.bundle
                 path: ca.bundle
+        {{ if .Values.harness.agent.mtls.enabled }}
+        - name: mtls
+          secret:
+            secretName: {{ include "gitops-agent.fullname" . }}-mtls
+            items:
+              - key: client.crt
+                path: client.crt
+              - key: client.key
+                path: client.key
+        {{ end }}
+
 ---

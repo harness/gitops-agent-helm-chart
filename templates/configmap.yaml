@@ -115,6 +115,10 @@ data:
     containerName: gitops-agent
     gitopsAgentConfig:
       gitopsServerHost: {{ include "gitops-agent.agentHttpTarget" . | quote }}
+    {{ if .Values.harness.agent.mtls.enabled }}
+    clientCertificateFilePath: /etc/mtls/client.crt
+    clientCertificateKeyFilePath: /etc/mtls/client.key
+    {{- end }}
 kind: ConfigMap
 metadata:
   name: {{ include "gitops-agent.fullname" . }}-upgrader

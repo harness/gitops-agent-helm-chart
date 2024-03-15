@@ -25,9 +25,23 @@ spec:
                 volumeMounts:
                   - name: config-volume
                     mountPath: /etc/config
+                {{ if .Values.harness.agent.mtls.enabled }}
+                  - name: mtls
+                    mountPath: /etc/mtls
+                {{ end }}
           volumes:
             - name: config-volume
               configMap:
                 name: {{ include "gitops-agent.fullname" . }}-upgrader
+            {{ if .Values.harness.agent.mtls.enabled }}
+            - name: mtls
+              secret:
+                secretName: {{ include "gitops-agent.fullname" . }}-mtls
+                items:
+                  - key: client.crt
+                    path: client.crt
+                  - key: client.key
+                    path: client.key
+            {{ end }}
           restartPolicy: Never
 {{- end }}

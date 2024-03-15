@@ -67,6 +67,10 @@ harness:
       enabled: true
       # Image path to the agent upgrader image
       image: harness/upgrader:latest
+    mtls:
+      enabled: false
+      clientCrt: ""
+      clientKey: ""
 
 nameOverride: ""
 fullnameOverride: ""
